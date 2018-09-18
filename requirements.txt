@@ -1,0 +1,13 @@
+certifi==2018.1.18
+chardet==3.0.4
+elsapy==0.4.6
+html5lib==1.0.1
+idna==2.6
+pathlib==1.0.1
+requests==2.18.4
+selenium==3.11.0
+six==1.11.0
+Unidecode==1.0.22
+urllib3==1.22
+w3lib==1.18.0
+webencodings==0.5.1

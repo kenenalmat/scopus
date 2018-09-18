@@ -1,0 +1,3 @@
+Journal of Management_1,TITLE ( "The effects of organizational controls on innovation modes: An ambidexterity perspective" )  AND  SRCTITLE ( "Journal of Management and Organization" ) 
+Journal of Management_2,TITLE ( "The effects of organizational controls on innovation modes: An ambidexterity perspective" )  AND  SRCTITLE ( "Journal of Management and Organization" ) 
+Journal of Management_3,TITLE ( "The effects of organizational controls on innovation modes: An ambidexterity perspective" )  AND  SRCTITLE ( "Journal of Management and Organization" ) 
