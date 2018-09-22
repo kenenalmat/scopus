@@ -14289,3 +14289,226 @@ Error: Message: chrome not reachable
 Query: TITLE ( "The effects of organizational controls on innovation modes: An ambidexterity perspective" )  AND  SRCTITLE ( "Journal of Management and Organization" ) 
 Row number: 1 
 
+Error: Message: chrome not reachable
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: chrome not reachable
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: chrome not reachable
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: chrome not reachable
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: chrome not reachable
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: element not visible
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: unknown error: Element <a class="secondaryLink" id="referenceSrhResults" href="https://www.scopus.com/search/submit/references.uri?sort=plf-f&amp;src=r&amp;imp=t&amp;sid=cbddad57433724c556a90643b0da0998&amp;sot=rec&amp;sdt=citedreferences&amp;sl=23&amp;s=EID%282-s2.0-85041355286%29&amp;origin=recordpage&amp;citeCnt=1&amp;citingId=2-s2.0-85041355286" title="View in search results format for more sorting options and/or to view a full list of documents.">...</a> is not clickable at point (731, 887). Other element would receive the click: <li class="pull-right">...</li>
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: invalid selector: Unable to locate an element with the xpath expression .// because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string './/' is not a valid XPath expression.
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: invalid selector: Unable to locate an element with the xpath expression .// because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string './/' is not a valid XPath expression.
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: invalid selector: Unable to locate an element with the xpath expression .// because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string './/' is not a valid XPath expression.
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: global name 'SCOPUS_URL' is not defined
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: global name 'SCOPUS_URL' is not defined
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: global name 'SCOPUS_URL' is not defined
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: global name 'SCOPUS_URL' is not defined
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: global name 'SCOPUS_URL' is not defined
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: global name 'SCOPUS_URL' is not defined
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: global name 'SCOPUS_URL' is not defined
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: global name 'SCOPUS_URL' is not defined
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: global name 'SCOPUS_URL' is not defined
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: global name 'SCOPUS_URL' is not defined
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: invalid selector: Unable to locate an element with the xpath expression .// because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string './/' is not a valid XPath expression.
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: invalid selector: Unable to locate an element with the xpath expression .// because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string './/' is not a valid XPath expression.
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: invalid selector: Unable to locate an element with the xpath expression .// because of the following error:
+SyntaxError: Failed to execute 'evaluate' on 'Document': The string './/' is not a valid XPath expression.
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//a[@href='#']"}
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: Message: unknown error: Element <a class="secondaryLink" id="referenceSrhResults" href="https://www.scopus.com/search/submit/references.uri?sort=plf-f&amp;src=r&amp;imp=t&amp;sid=416b0c833a1dfb89158cc3d433f41e33&amp;sot=rec&amp;sdt=citedreferences&amp;sl=23&amp;s=EID%282-s2.0-85041355286%29&amp;origin=recordpage&amp;citeCnt=1&amp;citingId=2-s2.0-85041355286" title="View in search results format for more sorting options and/or to view a full list of documents.">...</a> is not clickable at point (731, 750). Other element would receive the click: <div class="row">...</div>
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: get_property() takes exactly 2 arguments (1 given)
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: object of type 'NoneType' has no len()
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'WebElement' object has no attribute 'getAttribute'
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: global name 'pagination_list' is not defined
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: global name 'pagination_list' is not defined
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
+Error: 'NoneType' object is not iterable
+Query: TITLE ("Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 0 
+
