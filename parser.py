@@ -54,6 +54,7 @@ def process(q):
 			identifier = identifier + c
 	return (identifier, query)
 
+
 def get_numb(identifier):
 	info = identifier.split('_')
 	numb = info[1]
