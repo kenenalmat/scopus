@@ -1,6 +1,7 @@
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -9,6 +10,7 @@ import selenium.webdriver.chrome.service as service
 from selenium.webdriver import DesiredCapabilities
 
 import json, time
+import string_helper
 
 # from selenium.common.exceptions import NoSuchElementException
 # from selenium.webdriver.common.keys import Keys
@@ -37,16 +39,25 @@ PAGE_XPATH = "//ul[@class='pagination']/li/a[contains(@data-value, '{}')]"
 
 RESULTS_TABLE_ROWS_XPATH = "//tr[@class='searchArea']"
 
-DOCUMENT_TITLE_DUMMY_XPATH = ".//td/span[@class='txtOnlyDummy']"
-DOCUMENT_TITLE_LINKED_XPATH = ".//td/a[contains(@title, 'Show document details')]"
-AUTHORS_DUMMY_XPATH = ".//td/span[@class='Dummy']"
-AUTHORS_LINKED_XPATH = ".//td/span/a[contains(@title, 'Show author details')]"
-YEAR_XPATH = "//td[@class='textRight']"
-SOURCE_TITLE_LINKED_XPATH = ".//td/a[contains(@title, 'Show source title details')]"
-NEXT_SIBLING_XPATH = "following-sibling::*[1]"
-ADDITIONAL_CONTENT_XPATH = ".//td/div[@class='additionalContent']"
-CITED_BY_XPATH = ".//td/a[contains(@title, 'View the documents that references this one')]"
+DOT = "."
 
+DOCUMENT_TITLE_DUMMY_XPATH = ".//td/span[@class='txtOnlyDummy']" #
+DOCUMENT_TITLE_LINKED_XPATH = ".//td/a[contains(@title, 'Show document details')]" #
+AUTHORS_DUMMY_XPATH = ".//td/span[@class='Dummy']" #
+AUTHORS_LINKED_XPATH = ".//td/span/a[contains(@title, 'Show author details')]" #
+YEAR_XPATH = ".//td[@class='textRight']" #
+SOURCE_TITLE_LINKED_XPATH = ".//td/a[contains(@title, 'Show source title details')]" #
+NEXT_SIBLING_XPATH = "following-sibling::*[1]" 
+ADDITIONAL_CONTENT_XPATH = ".//td/div[@class='additionalContent']" #
+CITED_BY_XPATH = ".//td/a[contains(@title, 'View the documents that references this one')]" #
+
+AUTHORS_LIST_XPATH = "//section[@id='authorlist']/ul/li/a/span[@class='anchorText']"
+AFFILIATIONS_XPATH = ".//sup"
+
+AUTHORS_SPAN_XPATH = ".//td[2]/span"
+PARENTHESIS_PATTERN = "(...)"
+
+GLOBAL_DRIVER = None
 
 def find_element(driver, xpath, fast=False):
 	if fast:
@@ -92,6 +103,22 @@ def find_elements(driver, xpath, fast=False):
 		if elems is not None:
 			elems = driver.find_elements(By.XPATH, xpath)
 			return elems
+
+def find_elem_from_elem(driver, elem, xpath):
+	try:
+		res = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
+		res = elem.find_element(By.XPATH, DOT + xpath)
+		return res
+	except:
+		return None
+
+def find_elems_from_elem(driver, elem, xpath):
+	try:
+		res = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
+		res = elem.find_elements(By.XPATH, xpath)
+		return res
+	except:
+		return None
 
 def get_author_keywords(driver):
 	author_keywords = driver.find_elements(By.XPATH, AUTHOR_KEYWORDS_XPATH)
@@ -167,12 +194,46 @@ def get_number_of_paper_refs(driver):
 
 
 
+
+def get_authors_list(driver, link):
+	print ("OPENING NEW TAB")
+	cmd = Keys.CONTROL + "t"
+	driver.find_element_by_tag_name('body').send_keys(cmd)
+	time.sleep(6)
+
+	driver.get(link)
+
+	authors = find_elements(driver, AUTHORS_LIST_XPATH)
+	authors_list = []
+	for author in authors:
+		unnec = ""
+		author_name = author.text.strip()
+
+		try:
+			affs = author.find_elements(By.XPATH, AFFILIATIONS_XPATH)
+			for aff in affs:
+				unnec = unnec + aff.text.strip()
+			author_name = string_helper.exclude(author.name, unnec)
+		except:
+			None
+		authors_list.append(author_name)
+
+	print ("CLOSING THE TAB")
+	cmd = Keys.CONTROL + "w"
+	driver.find_element_by_tag_name('body').send_keys(cmd)
+
+	return authors_list
+
+
 def get_papers(driver):
 	rows = find_elements(driver, RESULTS_TABLE_ROWS_XPATH)
 	res = []
+	index = 0
 	for row in rows:
 		# link, title, authors, year, source, additional
 		#   Y,    Y,       N,    Y,     Y,       N
+		index = index + 1
+		print (index)
 
 		paper = dict()
 		link = NA
@@ -183,46 +244,64 @@ def get_papers(driver):
 		additional_content = NA
 		cited_by_count = NA
 
-		# Link and Document title
-		try:
-			document_link = row.find_element(By.XPATH, DOCUMENT_TITLE_LINKED)
-			link = document_link.get_attribute("href").strip()
-			document_title = document_link.text.strip()
-		except:
-			document_title = row.find_element(By.XPATH, DOCUMENT_TITLE_DUMMY).text.strip()
-			authors = row.find_element(By.XPATH, AUTHORS_DUMMY).text.strip()
-
-		
-		# Authors
-		# We have to check for a span text in td to detect "(...)"
-
-		# try:
-		# 	authors = row.find_element(By.XPATH, AUTHORS_DUMMY).text.strip()
-		# except:
-		# 	authors = row.find_element(By.XPATH, AUTHORS_DUMMY).text.strip()
 
 		# Year
+		# TODO
+		
 		textRight = row.find_elements(By.XPATH, YEAR_XPATH)[0]
 		year = textRight.text.strip()
-		additional_content = NA
-
 
 		# Source title
 		try:
 			source_title = row.find_element(By.XPATH, SOURCE_TITLE_LINKED_XPATH).text.strip()
 		except:
 			source_title = textRight.find_element(By.XPATH, NEXT_SIBLING_XPATH).text.strip()
-		
+		source_title = source_title.split("\n")[0].strip()
 
 		# Additional content
 		try:
 			additional_content = row.find_element(By.XPATH, ADDITIONAL_CONTENT_XPATH).text.strip()
 		except:
-			None
+			pass
 
 		# Cited by
+
 		cited_by_count = row.find_element(By.XPATH, CITED_BY_XPATH).text.strip()
 
+
+		# Link, Document title, Authors
+		
+		try:
+
+			# TODO
+			
+			document_link = row.find_element(By.XPATH, DOCUMENT_TITLE_LINKED_XPATH)
+			link = document_link.get_attribute("href").strip()
+			
+			document_title = document_link.text.strip()
+
+			span = row.find_element(By.XPATH, AUTHORS_SPAN_XPATH)
+			txt = span.text.strip()
+			
+			if string_helper.contains(txt, PARENTHESIS_PATTERN):
+				print (link)
+				authors_list = get_authors_list(driver, link)
+				authors = ", ".join(authors_list)
+			else:
+				authors = txt
+		except Exception as e:
+			
+			# TODO
+			# document_title = find_elem_from_elem(driver, row, DOCUMENT_TITLE_DUMMY_XPATH).text.strip()
+			# authors = find_elem_from_elem(driver, row, AUTHORS_DUMMY_XPATH).text.strip()
+			try:
+
+				document_title = row.find_element(By.XPATH, DOCUMENT_TITLE_DUMMY_XPATH).text.strip()
+				authors = row.find_element(By.XPATH, AUTHORS_DUMMY_XPATH).text.strip()
+			except Exception as ex:
+				with open("errors.log"):
+					print ("FUCKING ERROR: {}".format(str(e)))
+				exit()
 
 		# --- Collecting and appending
 		paper['link'] = link
@@ -238,6 +317,7 @@ def get_papers(driver):
 	return (True, res)
 
 # TODO: on page where we click on view in search format smth is wrong, even if there is link, it terminates and starts again
+
 
 def get(driver, query, row_number):
 	start_time = time.time()
@@ -261,9 +341,11 @@ def get(driver, query, row_number):
 			
 			driver.get(SCOPUS_URL)
 
-
-			elem = driver.find_element_by_id("searchfield")
-			driver.execute_script("arguments[0].innerHTML = '{}';".format(query), elem)
+			try:
+				elem = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID,"searchfield")))
+				driver.execute_script("arguments[0].innerHTML = '{}';".format(query), elem)
+			except:
+				continue
 
 			btn = driver.find_element_by_id("advSearch")
 			btn.click()
@@ -297,14 +379,14 @@ def get(driver, query, row_number):
 
 
 			# SHRINKING THE RESULTS TO 200
-			# results_per_page = find_element(driver, RESULTS_PER_PAGE_XPATH)
-			# if results_per_page is None:
-			# 	continue
-			# results_per_page.click()
-			# results_per_page_200 = find_element(driver, RESULTS_PER_PAGE_200_XPATH)
-			# if results_per_page_200 is None:
-			# 	continue
-			# results_per_page_200.click()
+			results_per_page = find_element(driver, RESULTS_PER_PAGE_XPATH)
+			if results_per_page is None:
+				continue
+			results_per_page.click()
+			results_per_page_200 = find_element(driver, RESULTS_PER_PAGE_200_XPATH)
+			if results_per_page_200 is None:
+				continue
+			results_per_page_200.click()
 
 			papers_all = []
 			page_num = 2
@@ -314,6 +396,10 @@ def get(driver, query, row_number):
 				for paper in papers_chunk:
 					papers_all.append(paper)
 
+
+				# TODO: get rid of break
+				# break
+
 				try:
 					next_page_link = find_element(driver, PAGE_XPATH.format(page_num), fast=True)
 					next_page_link.click()
@@ -321,7 +407,10 @@ def get(driver, query, row_number):
 					page_num = page_num + 1
 				except:
 					break
-			
+
+			with open("papers", "a") as f:
+				f.write(json.dumps(papers_all, indent=4))
+
 			for paper in papers_all:
 				res['papers'].append(paper)
 
