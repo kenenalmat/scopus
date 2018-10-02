@@ -71,7 +71,7 @@ for q in queries:
 	print ("Processing query {}...".format(row_number))
 
 	res = get(driver, q.strip(), row_number)
-	print ("It took {} seconds to process query {}.".format(round(time.time() - start_time / 3600, 2), row_number))
+	print ("It took {} seconds to process query {}.".format(str(1.0 * round(time.time() - start_time, 2)), row_number))
 	ordered_res = collections.OrderedDict(sorted(res.items()))
 	res = ordered_res
 	
