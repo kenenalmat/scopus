@@ -1,0 +1,7 @@
+Error: Message: unknown error: Element <a class="secondaryLink" id="referenceSrhResults" href="https://www.scopus.com/search/submit/references.uri?sort=plf-f&amp;src=r&amp;imp=t&amp;sid=469c81c1a2ee69211a59360c03259622&amp;sot=rec&amp;sdt=citedreferences&amp;sl=23&amp;s=EID%282-s2.0-85041355286%29&amp;origin=recordpage&amp;citeCnt=1&amp;citingId=2-s2.0-85041355286" title="View in search results format for more sorting options and/or to view a full list of documents.">...</a> is not clickable at point (731, 887). Other element would receive the click: <div class=" _pendo-guide-content_">...</div>
+  (Session info: chrome=69.0.3497.81)
+  (Driver info: chromedriver=2.40,platform=Linux 4.15.0-34-generic x86_64)
+
+Query: TITLE (“Dual Commitments to Organizations and Professions: Different Motivational Pathways to Productivity") AND SRCTITLE("Journal of Management") 
+Row number: 1 
+

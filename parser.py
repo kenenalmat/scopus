@@ -67,7 +67,12 @@ for q in queries:
 
 	(identifier, q) = process(q.strip())
 	row_number = get_numb(identifier)
+
+	print ("Processing query {}...".format(row_number))
+
 	res = get(driver, q.strip(), row_number)
+	
+	print ("It took {} seconds to process query {}.".format(round(time.time() - start_time) / 3600, 2), row_number)
 	ordered_res = collections.OrderedDict(sorted(res.items()))
 	res = ordered_res
 	
