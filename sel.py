@@ -196,16 +196,14 @@ def get_number_of_paper_refs(driver):
 
 
 def get_authors_list(driver, link):
-	print ("OPENING NEW TAB")
-	cmd = Keys.CONTROL + "t"
-	driver.find_element_by_tag_name('body').send_keys(cmd)
-	time.sleep(6)
-
-	driver.get(link)
+	main_window = driver.current_window_handle
+	link.send_keys(Keys.CONTROL + Keys.ENTER)
+	driver.switch_to_window(driver.window_handles[1])
 
 	authors = find_elements(driver, AUTHORS_LIST_XPATH)
 	authors_list = []
-	for author in authors:
+	
+	for author in authors:		
 		unnec = ""
 		author_name = author.text.strip()
 
@@ -213,17 +211,15 @@ def get_authors_list(driver, link):
 			affs = author.find_elements(By.XPATH, AFFILIATIONS_XPATH)
 			for aff in affs:
 				unnec = unnec + aff.text.strip()
-			author_name = string_helper.exclude(author.name, unnec)
+			author_name = string_helper.exclude(author_name, unnec)
 		except:
-			None
+			pass
 		authors_list.append(author_name)
 
-	print ("CLOSING THE TAB")
-	cmd = Keys.CONTROL + "w"
-	driver.find_element_by_tag_name('body').send_keys(cmd)
+	driver.close()
+	driver.switch_to_window(main_window)
 
 	return authors_list
-
 
 def get_papers(driver):
 	rows = find_elements(driver, RESULTS_TABLE_ROWS_XPATH)
@@ -232,9 +228,6 @@ def get_papers(driver):
 	for row in rows:
 		# link, title, authors, year, source, additional
 		#   Y,    Y,       N,    Y,     Y,       N
-		index = index + 1
-		print (index)
-
 		paper = dict()
 		link = NA
 		document_title = NA
@@ -284,8 +277,7 @@ def get_papers(driver):
 			txt = span.text.strip()
 			
 			if string_helper.contains(txt, PARENTHESIS_PATTERN):
-				print (link)
-				authors_list = get_authors_list(driver, link)
+				authors_list = get_authors_list(driver, document_link)
 				authors = ", ".join(authors_list)
 			else:
 				authors = txt
@@ -300,7 +292,7 @@ def get_papers(driver):
 				authors = row.find_element(By.XPATH, AUTHORS_DUMMY_XPATH).text.strip()
 			except Exception as ex:
 				with open("errors.log"):
-					print ("FUCKING ERROR: {}".format(str(e)))
+					print ("ERROR: {}".format(str(e)))
 				exit()
 
 		# --- Collecting and appending
@@ -396,7 +388,6 @@ def get(driver, query, row_number):
 				for paper in papers_chunk:
 					papers_all.append(paper)
 
-
 				# TODO: get rid of break
 				# break
 
@@ -408,8 +399,7 @@ def get(driver, query, row_number):
 				except:
 					break
 
-			with open("papers", "a") as f:
-				f.write(json.dumps(papers_all, indent=4))
+			
 
 			for paper in papers_all:
 				res['papers'].append(paper)
@@ -421,6 +411,5 @@ def get(driver, query, row_number):
 		except Exception as e:
 			with open("errors.log", "a") as f:
 				f.write("Error: {}\nQuery: {} \nRow number: {} \n\n".format(str(e), query, row_number))
-	driver.close()
 
 	return res

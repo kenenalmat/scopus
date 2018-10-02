@@ -1,1 +1,3 @@
 Journal of Management_3,TITLE ("Multiteam Systems: A Structural Framework and Meso-Theory of System Functioning") AND SRCTITLE("Journal of Management")
+Journal of Management_4,TITLE ("Multiteam Systems: A Structural Framework and Meso-Theory of System Functioning") AND SRCTITLE("Journal of Management")
+Journal of Management_59,TITLE (“A Review of the Internal Capital Allocation Literature: Piecing Together the Capital Allocation Puzzle") AND SRCTITLE("Journal of Management")

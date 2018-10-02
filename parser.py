@@ -83,7 +83,7 @@ for q in queries:
 		with open("res.json", "a") as f:
 			f.write(json.dumps(res))
 			f.write("\n")
-		print (json.dumps(res, indent=4))
+		# print (json.dumps(res, indent=4))
 	else:
 		print ("!!!")
 		print (q)
