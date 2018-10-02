@@ -94,3 +94,4 @@ for q in queries:
 
 
 print ("FINISHED. Excution took {} hours.".format(str(1.0 * (time.time() - start_time) / 3600)))
+driver.close()
