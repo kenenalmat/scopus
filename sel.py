@@ -321,7 +321,7 @@ def get(driver, query, row_number):
 	res['papers'] = []
 
 	found = False
-
+	print ("Processing query {}.".format(row_number))
 	for i in range(0, 5):
 		if found:
 			print ("Found, breaking: {}".format(str(i)))
