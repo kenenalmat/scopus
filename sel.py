@@ -293,7 +293,7 @@ def get_papers(driver):
 			except Exception as ex:
 				with open("errors.log"):
 					print ("ERROR: {}".format(str(e)))
-				exit()
+				
 
 		# --- Collecting and appending
 		paper['link'] = link
@@ -311,7 +311,7 @@ def get_papers(driver):
 # TODO: on page where we click on view in search format smth is wrong, even if there is link, it terminates and starts again
 
 
-def get(driver, query, row_number):
+def get(driver, query, row_number, shrink_results=True):
 	start_time = time.time()
 	res = dict()
 	res['aquery'] = query
@@ -319,9 +319,9 @@ def get(driver, query, row_number):
 	res['paper_refs'] = "0"
 	res['status'] = "Not processed"
 	res['papers'] = []
-
 	found = False
-	
+	shrinked = False
+
 	for i in range(0, 5):
 		if found:
 			print ("Found, breaking: {}".format(str(i)))
@@ -371,14 +371,17 @@ def get(driver, query, row_number):
 
 
 			# SHRINKING THE RESULTS TO 200
-			results_per_page = find_element(driver, RESULTS_PER_PAGE_XPATH)
-			if results_per_page is None:
-				continue
-			results_per_page.click()
-			results_per_page_200 = find_element(driver, RESULTS_PER_PAGE_200_XPATH)
-			if results_per_page_200 is None:
-				continue
-			results_per_page_200.click()
+
+			if shrink_results == True:
+				results_per_page = find_element(driver, RESULTS_PER_PAGE_XPATH)
+				if results_per_page is None:
+					continue
+				results_per_page.click()
+				results_per_page_200 = find_element(driver, RESULTS_PER_PAGE_200_XPATH)
+				if results_per_page_200 is None:
+					continue
+				results_per_page_200.click()
+				shrinked = True
 
 			papers_all = []
 			page_num = 2
@@ -394,12 +397,9 @@ def get(driver, query, row_number):
 				try:
 					next_page_link = find_element(driver, PAGE_XPATH.format(page_num), fast=True)
 					next_page_link.click()
-					
 					page_num = page_num + 1
 				except:
-					break
-
-			
+					break			
 
 			for paper in papers_all:
 				res['papers'].append(paper)
@@ -412,4 +412,4 @@ def get(driver, query, row_number):
 			with open("errors.log", "a") as f:
 				f.write("Error: {}\nQuery: {} \nRow number: {} \n\n".format(str(e), query, row_number))
 
-	return res
+	return (shrinked, res)

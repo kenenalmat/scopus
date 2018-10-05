@@ -63,14 +63,20 @@ def get_numb(identifier):
 
 driver = webdriver.Chrome(executable_path=EXECUTABLE_PATH, desired_capabilities=DESIRED_CAPABILITIES)
 
+
 for q in queries:
 
-	(identifier, q) = process(q.strip())
+	(identifier, query) = process(q.strip())
 	row_number = get_numb(identifier)
 
 	print ("Processing query {}...".format(row_number))
 
-	res = get(driver, q.strip(), row_number)
+	to_shrink = True
+	(shrinked, res) = get(driver, query.strip(), row_number, shrink_results=to_shrink)
+	
+	if shrinked:
+		to_shrink = False
+
 	print ("It took {} seconds to process query {}.".format(str(1.0 * round(time.time() - start_time, 2)), row_number))
 	ordered_res = collections.OrderedDict(sorted(res.items()))
 	res = ordered_res
@@ -89,13 +95,10 @@ for q in queries:
 			f.write("\n")
 		# print (json.dumps(res, indent=4))
 	else:
-		print ("!!!")
-		print (q)
-		print ("!!!")
 		with open("not_processed.txt", "a") as f:
 			f.write(q)
+			f.write("\n")
 	idx += 1
-
 
 print ("FINISHED. Excution took {} hours.".format(str(1.0 * (time.time() - start_time) / 3600)))
 driver.close()
