@@ -311,7 +311,7 @@ def get_papers(driver):
 # TODO: on page where we click on view in search format smth is wrong, even if there is link, it terminates and starts again
 
 
-def get(driver, query, row_number, shrink_results=True):
+def get(driver, query, row_number, shrink_results):
 	start_time = time.time()
 	res = dict()
 	res['aquery'] = query
