@@ -65,7 +65,7 @@ driver = webdriver.Chrome(executable_path=EXECUTABLE_PATH, desired_capabilities=
 
 
 for q in queries:
-
+	query_start_time = time.time()
 	(identifier, query) = process(q.strip())
 	row_number = get_numb(identifier)
 
@@ -77,7 +77,7 @@ for q in queries:
 	if shrinked:
 		to_shrink = False
 
-	print ("It took {} seconds to process query {}.".format(str(1.0 * round(time.time() - start_time, 2)), row_number))
+	print ("It took {} seconds to process query {}.".format(str(1.0 * round(time.time() - query_start_time, 2)), row_number))
 	ordered_res = collections.OrderedDict(sorted(res.items()))
 	res = ordered_res
 	
@@ -89,6 +89,11 @@ for q in queries:
 	status = res["status"]
 	res["identifier"] = identifier
 
+	if status == "Cannot find":
+		with open("not_found.txt") as f:
+			f.write(q)
+			f.write("\n")
+	
 	if status == "OK":
 		with open("res.json", "a") as f:
 			f.write(json.dumps(res))
@@ -97,7 +102,7 @@ for q in queries:
 	else:
 		with open("not_processed.txt", "a") as f:
 			f.write(q)
-			f.write("\n")
+			# f.write("\n")
 	idx += 1
 
 print ("FINISHED. Excution took {} hours.".format(str(1.0 * (time.time() - start_time) / 3600)))

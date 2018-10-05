@@ -345,8 +345,10 @@ def get(driver, query, row_number, shrink_results=True):
 			try:
 				driver.find_element(By.XPATH, LINK_XPATH).click()
 			except Exception as e:
-				res['status'] = "Problem 1: Scopus could not find any document with that query."
-				print ("ASDASDSA")
+				res['status'] = "Cannot find"
+				with open("errors.log", "a") as f:
+					f.write("Error: {}\nQuery: {} \nRow number: {} \n\n".format("Cannot find the document: ", query, row_number))
+
 				break
 
 
