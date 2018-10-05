@@ -1,0 +1,63 @@
+?
+?
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+?
+?
+?
+?
+? and "AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+finds
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+symbol appears in a word, with no following space
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+finds
+?
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+&amp; and "AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+&amp; and "AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+
+
+
+
+300
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+"AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+
+
+
+
+
+Problem 1: Question mark is a problem
+Problem 2: "AND  ( LIMIT-TO ( DOCTYPE ,  "ar" ) )"
+Problem 3: "&amp;"
+Problem 4: Trial number
+
+~ not found
+` not found
+! not found
+? is a problem
+@ not found
+# not found
+$ not found
+% not found
+^ not found
+* is not a problem
+( is not a problem
+) is not a problem
+- is not a problem
+= not found
+_ not found
+/ is not a problem
+
+
+&amp; is a problem
