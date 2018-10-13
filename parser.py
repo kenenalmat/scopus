@@ -66,6 +66,9 @@ driver = webdriver.Chrome(executable_path=EXECUTABLE_PATH, desired_capabilities=
 
 for q in queries:
 	query_start_time = time.time()
+	if q == "":
+		continue
+
 	(identifier, query) = process(q.strip())
 	row_number = get_numb(identifier)
 
@@ -90,9 +93,8 @@ for q in queries:
 	res["identifier"] = identifier
 
 	if status == "Cannot find":
-		with open("not_found.txt") as f:
+		with open("not_found.txt", "a") as f:
 			f.write(q)
-			f.write("\n")
 	
 	if status == "OK":
 		with open("res.json", "a") as f:
@@ -102,7 +104,6 @@ for q in queries:
 	else:
 		with open("not_processed.txt", "a") as f:
 			f.write(q)
-			# f.write("\n")
 	idx += 1
 
 print ("FINISHED. Excution took {} hours.".format(str(1.0 * (time.time() - start_time) / 3600)))

@@ -58,6 +58,8 @@ AUTHORS_SPAN_XPATH = ".//td[2]/span"
 PARENTHESIS_PATTERN = "(...)"
 
 GLOBAL_DRIVER = None
+ABSTRACT_PARAGRAPH_XPATH = "//section[@id='abstractSection']/p"
+NO_ABSTRACT_AVAILABLE = "[No abstract available]"
 
 def find_element(driver, xpath, fast=False):
 	if fast:
@@ -358,8 +360,22 @@ def get(driver, query, row_number, shrink_results):
 			else:
 				continue
 
+			
+			abstract_paragaph = find_element(driver, ABSTRACT_PARAGRAPH_XPATH)
+			if abstract_paragaph is None:
+				continue
+			else:
+				abstract_paragaph = abstract_paragaph.text.strip()
+				if abstract_paragaph = NO_ABSTRACT_AVAILABLE:
+					res['execution_time'] = time.time() - start_time
+					res['status'] = "OK"
+					res['no_reference'] = 1
+					found = True
+					break
+
 			view_in_search_results_format_link = find_element(driver, VIEW_IN_SEARCH_RESULTS_FORMAT)
 			if view_in_search_results_format_link is None:
+
 				continue
 
 			view_in_search_results_format_link.click()
