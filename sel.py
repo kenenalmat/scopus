@@ -324,7 +324,7 @@ def get(driver, query, row_number, shrink_results):
 	found = False
 	shrinked = False
 
-	for i in range(0, 5):
+	for i in range(0, 3):
 		if found:
 			print ("Found, breaking: {}".format(str(i)))
 			break
@@ -366,7 +366,7 @@ def get(driver, query, row_number, shrink_results):
 				continue
 			else:
 				abstract_paragaph = abstract_paragaph.text.strip()
-				if abstract_paragaph = NO_ABSTRACT_AVAILABLE:
+				if abstract_paragaph == NO_ABSTRACT_AVAILABLE:
 					res['execution_time'] = time.time() - start_time
 					res['status'] = "OK"
 					res['no_reference'] = 1

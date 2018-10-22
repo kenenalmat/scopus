@@ -12,7 +12,7 @@ from sel import get
 import json, time
 import collections
 
-
+UPDATE_BROSWER_PER = 50
 DESIRED_CAPABILITIES = DesiredCapabilities.PHANTOMJS.copy()
 DESIRED_CAPABILITIES['authority'] = 'www.scopus.com'
 DESIRED_CAPABILITIES['method'] = 'GET'
@@ -39,7 +39,6 @@ cnt = 10
 idx = 1
 ar = []
 
-
 def process(q):
 	identifier = ""
 	query = ""
@@ -61,10 +60,42 @@ def get_numb(identifier):
 	return numb
 
 
-driver = webdriver.Chrome(executable_path=EXECUTABLE_PATH, desired_capabilities=DESIRED_CAPABILITIES)
+def get_new_driver():
+	driver = webdriver.Chrome(executable_path=EXECUTABLE_PATH, desired_capabilities=DESIRED_CAPABILITIES)
+	return driver
+
+number_of_processed_queries = 0
+driver = None
 
 
 for q in queries:
+	if number_of_processed_queries % UPDATE_BROSWER_PER == 0:
+		if driver is not None:
+			try:
+				driver.close()
+			except Exception as e:
+				pass
+
+		cnt = 0
+		while True:
+			ok = False
+			try:
+				driver = get_new_driver()
+				ok = True
+			except Exception as e:
+				pass
+			if cnt == 10 and ok is False:
+				exit()
+			if ok:
+				break
+			cnt += 1
+
+	number_of_processed_queries += 1
+	try:
+		with open ("last_query.txt", "a") as f:
+			f.write(str(number_of_processed_queries))
+			f.write("\n")
+
 	query_start_time = time.time()
 	if q == "":
 		continue
@@ -107,4 +138,7 @@ for q in queries:
 	idx += 1
 
 print ("FINISHED. Excution took {} hours.".format(str(1.0 * (time.time() - start_time) / 3600)))
-driver.close()
+try:
+	driver.close()
+except Exception as e:
+	pass
